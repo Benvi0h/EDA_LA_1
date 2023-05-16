@@ -1,0 +1,150 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+---
+title: "Us economic indicators"
+#GDP
+#part 1
+```{r US}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(e1071)
+library(moments)
+gdp <- read_csv("C:/Users/pvrad/Downloads/GDP.csv")
+View(gdp)
+```
+#part2
+```{r}
+colnames(gdp)
+head(gdp)
+tail(gdp)
+summary(gdp)
+sd(gdp$GDP)
+var(gdp$GDP)
+range(gdp$GDP)
+quantile(gdp$GDP, 1/2)
+skewness(gdp$GDP)
+kurtosis(gdp$GDP)
+rev(gdp$GDP)
+cat("\nColumn:",ncol(gdp$GDP))
+```
+#part3
+```{r}
+plot(gdp$GDP)
+boxplot(gdp$GDP)
+table(gdp$GDP[gdp$GDP > 200])
+scale(gdp$GDP)
+str(gdp)
+cummax(gdp$GDP)
+cumsum(gdp$GDP)
+```
+#Unemployement Rate  
+#part4
+```{r}
+unrate <- read_csv("C:/Users/pvrad/Downloads/UNRATE.csv")
+colnames(unrate)
+head(unrate)
+tail(unrate)
+summary(unrate)
+sd(unrate$UNRATE)
+var(unrate$UNRATE)
+range(unrate$UNRATE)
+skewness(unrate$UNRATE)
+kurtosis(unrate$UNRATE)
+```
+#part5
+```{r}
+boxplot(unrate$UNRATE)
+table(unrate$UNRATE)
+scale(unrate$UNRATE)
+str(unrate)
+cummax(unrate$UNRATE)
+cumsum(unrate$UNRATE)
+unrate[unrate$UNRATE > 5, ]
+unrate[unrate$UNRATE < 4, ]
+mean(unrate$UNRATE[unrate$DATE >= "2020-01-01" & unrate$DATE < "2021-01-01"])
+plot(unrate$DATE, unrate$UNRATE, type = "l")
+cat("\nColumn:",ncol(unrate$UNRATE))
+rev(unrate$UNRATE)
+```
+#Inflation rate
+#part6  
+```{r}
+t10yie <- read.csv("C:/Users/pvrad/Downloads/T10YIE.csv")
+colnames(t10yie)
+head(t10yie)
+tail(t10yie)
+summary(t10yie)
+sd(t10yie$T10YIE)
+var(t10yie$T10YIE)
+range(t10yie$T10YIE)
+table(t10yie$T10YIE)
+str(t10yie)
+cummax(t10yie$T10YIE)
+cumsum(t10yie$T10YIE)
+t10yie[t10yie$T10YIE > 3, ]
+t10yie[t10yie$T10YIE < 2, ]
+mean(t10yie$T10YIE[t10yie$DATE >= "2020-01-01" & t10yie$DATE < "2021-01-01"])
+median(t10yie$T10YIE[t10yie$DATE >= "2021-01-01" & t10yie$DATE < "2022-01-01"])
+cat("\nColumn:",ncol(t10yie$T10YIE))
+rev(t10yie$T10YIE)
+```
+#Consumer price index
+#part7
+```{r}
+core <- read.csv("C:/Users/pvrad/Downloads/CORESTICKM159SFRBATL.csv")
+colnames(core)
+head(core)
+tail(core)
+summary(core)
+boxplot(core$CORESTICKM159SFRBATL)
+table(core$CORESTICKM159SFRBATL)
+skewness(core$CORESTICKM159SFRBATL)
+kurtosis(core$CORESTICKM159SFRBATL)
+range(core$CORESTICKM159SFRBATL)
+scale(core$CORESTICKM159SFRBATL)
+str(core)
+cummax(core$CORESTICKM159SFRBATL)
+cumsum(core$CORESTICKM159SFRBATL)
+core[core$CORESTICKM159SFRBATL > 2, ]
+core[core$CORESTICKM159SFRBATL < 1, ]
+mean(core$CORESTICKM159SFRBATL[core$DATE >= "2020-01-01" & core$DATE < "2021-01-01"])
+sd(core$CORESTICKM159SFRBATL[core$DATE >= "2022-01-01" & core$DATE < "2023-01-01"])
+cat("\nColumn:",ncol(core$CORESTICKM159SFRBATL))
+rev(core$CORESTICKM159SFRBATL)
+```
+#Producer Price Index
+#part8
+```{r}
+ppi <- read.csv("C:/Users/pvrad/Downloads/PPIACO.csv")
+head(ppi)
+tail(ppi)
+str(ppi)
+summary(ppi)
+dim(ppi)
+colnames(ppi)
+rownames(ppi)
+is.na(ppi)
+sum(is.na(ppi))
+na.omit(ppi)
+unique(ppi$DATE)
+sd(ppi$PPIACO)
+boxplot(ppi$PPIACO)
+subset(ppi, DATE >= "2022-01-01")
+rev(ppi$PPIACO)
+cat("\nColumn:",ncol(ppi$PPIACO))
+```
+
+
+
+
+
+
+
+
+
+
+
